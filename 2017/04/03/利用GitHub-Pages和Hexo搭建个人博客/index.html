@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Gemini_Qiu">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="利用GitHub Pages和Hexo搭建个人博客"/>
+  <meta property="og:description" content="记录那些经历过或许下一秒就被遗忘的生命中的折腾" />
+  <meta property="og:site_name" content="GemQiu&#39;Blog"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.comundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="GemQiu&#39;Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>GemQiu'Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">利用GitHub Pages和Hexo搭建个人博客</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/GeminiQiu">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:twinkle_qiu@163.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Gemini_Qiu</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-04-03</span>
+            <span class="time">16:56:15</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/IT/">#IT</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="搭建github-pages步骤"><a href="#搭建github-pages步骤" class="headerlink" title="搭建github pages步骤"></a>搭建github pages步骤</h1><h2 id="1-搭建github-page页面"><a href="#1-搭建github-page页面" class="headerlink" title="1.搭建github page页面"></a>1.搭建github page页面</h2><pre><code>#下载github shell或者github desktop  
+网速是个问题，记得翻墙下载。  
+#在github上新建一个repo
+打开你的github，新建一个repository，格式如username.github.io，username必须是你github的账号。  
+#接着clone到本地 
+#进入git shell下面
+$ git clone https://github.com/username/username.github.io  
+#建一个index.html  
+$ cd username.github.io
+$ echo &quot;Hello World&quot; &gt; index.html
+#push到git
+$ git add --all
+$ git commit -m &quot;Initial commit&quot;
+$ git push -u origin master
+#已生成的github主页：http://username.github.io  
+</code></pre><h2 id="2-Hexo搭建"><a href="#2-Hexo搭建" class="headerlink" title="2.Hexo搭建"></a>2.Hexo搭建</h2><p>必须安装Node <a href="https://nodejs.org/" target="_blank" rel="external">nodejs</a> </p>
+<pre><code>#本地搭建  
+#安装hexo  
+$ npm install -g hexo
+#安装发布用的deploy
+$ npm install hexo-deployer-git --save
+#进入执行clone的文件夹
+#初始化  
+$ hexo init username.github.io
+#这里是以“username.github.io“初始化为博客目录，当然也可以自己定义一个目录作为博客的目录
+#结束之后会告诉你start blogging with Hexo!
+#安装
+$ cd username.github.io
+$ npm install
+#启动服务预览
+$ hexo server
+#本地打开localhost::4000网址预览
+</code></pre><h2 id="3-Blogging"><a href="#3-Blogging" class="headerlink" title="3.Blogging"></a>3.Blogging</h2><p>A.配合markdown进行博客编写；<br>B.Blog文件夹在source/_posts下，对应所有的md文件，都是博客。你可以把所有博客文件用markdown编写后，post在这里，然后用hexo更新，并发布；<br>C.还可以用hexo new “post name”进行发布，并修改编写，但在win下，建议直接新建文件，然后在B中提到的文件夹下用markdown进行博客的编写就可以了；  </p>
+<h2 id="4-发布到github-page"><a href="#4-发布到github-page" class="headerlink" title="4.发布到github page"></a>4.发布到github page</h2><p>打开你hexo init的博客目录下的_config.yml文件进行编辑发布所需要的添加的git信息，找到deploy那行配置信息，然后，type定义为git，repo定义为“git@github.com:username/username.github.io.git”的形式。这个你不知道如果怕写错，可以在github里打开，然后clone里复制。</p>
+<pre><code>deploy:
+ type: git
+ repo: git@github.com:username/username.github.io.git
+</code></pre><p>修改完之后，执行以下三个步骤：</p>
+<pre><code>hexo clean
+hexo generate
+hexo deploy
+</code></pre><p>一些常用命令：</p>
+<pre><code>hexo new&quot;postName&quot; #新建文章
+hexo new page&quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
+hexo help # 查看帮助
+hexo version #查看Hexo的版本
+</code></pre><h2 id="5-主题修改"><a href="#5-主题修改" class="headerlink" title="5.主题修改"></a>5.主题修改</h2><p>目前的主题，我是这么找的：</p>
+<p>1.github repository 的setting下有theme这个选项，有提供给一些比较主流的一些主题，但是并不是很多，挺好看的；<br>2.百度hexo themes了，官网的一些<a href="https://hexo.io/themes/；" target="_blank" rel="external">https://hexo.io/themes/；</a><br>3.自己编写、修改别人的作品，这个比较耗时间，而且要懂nodejs等语言，属于开发者等级，这个肯定要耗很多时间。但是如果有兴趣，可以开发一个自己中意的主题，个性化比较强，花费的时间可能也不是一般的多了。<br>所以建议，在1和2两个点上，多花点时间，去找一个自己喜欢的theme，然后简单修改发布。后续的慢慢地一点点基于你最初选择的主题进行修改。</p>
+<p>更具体的细节可以参考：<a href="http://www.cnblogs.com/scplee/p/5533292.html" target="_blank" rel="external">非生异也</a></p>
+<p>本项目源码托管在GitHub上</p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>阮一峰曾经说过:喜欢写Blog的人,会经历3个阶段。</p>
+<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。<br>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。<br>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。<br>在这之前，我在博客园里写了两年的博客，数量虽然不多，但都是自己学习过程的真实记录，这属于第一阶段。随着学习的东西越来越多，总想着要有个独立的个人主页，于是就开始不停地Google。最终在SAE + WordPress 和 GitHub Pages + Hexo 之间选择了后者，一是因为Git的存在，二是因为喜欢这种轻量级框架的简单而强大。</p>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><h3 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h3><p>GitHub Pages的官方介绍是 Websites for you and your projects. 利用它只需要简单的几步，就可以建立一个自己的站点，前提是已经有了一个GitHub帐号。</p>
+<p>1、Create a repository：<br>repository名称的格式必须为 username.github.io （username为自己的GitHub帐号。）</p>
+<p>2、Clone the repository：</p>
+<pre><code>$ git clone https://github.com/username/username.github.io
+</code></pre><p>3、Hello World：</p>
+<pre><code>$ cd user.github.io
+$ exho &quot;Hello World&quot; &gt; index.html
+</code></pre><p>4、 Push it：</p>
+<pre><code>$ git add --all
+$ git commit -m &quot;Initial commit&quot;
+$ git push -u origin master
+</code></pre><p>5、已经生成了你的主页 <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> </p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>Hexo是一个快速、简洁且高效的博客框架，具有如下特点：<br>急速生成静态网页<br>支持Markdown<br>一键部署博客到GitHub Pages等平台<br>丰富的插件支持</p>
+<p>1、 先在本地环境配置好Hexo</p>
+<pre><code>$ npm install hexo-cli -g
+$ hexo init username.github.io
+$ cd username.github.io
+$ npm install
+$ hexo server
+</code></pre><p>2、将博客部署到GitHub上：这时在浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 就可以在本地预览博客了</p>
+<p>安装 hexo-deployer-git</p>
+<pre><code>$ npm install hexo-deployer-git --save
+</code></pre><p>修改配置文件_config.yml </p>
+<pre><code>deploy:
+  type: git
+  repo: &lt;repository url&gt;
+</code></pre><p>提交到GitHub上 </p>
+<pre><code>$ hexo clean
+$ hexo g
+$ hexo d
+</code></pre><p>此时访问 <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> 就和本地一样的效果了。更多Hexo的使用访问Hexo官方文档 </p>
+<h3 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h3><p>现在已经可以通过访问你的GitHub Pages二级域名来访问你的博客了，不过既然是独立博客，当然是应该通过独立域名来访问。</p>
+<h4 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h4><p>由于在国内购买域名需要备案（虽然我已经备案过了），费时比较长，所以我又在国外购买了一个域名。而且正好赶上namecheap疯狂促销，就以很满意的价格买了一年的。</p>
+<h4 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h4><h5 id="添加CNAME"><a href="#添加CNAME" class="headerlink" title="添加CNAME"></a>添加CNAME</h5><p>在usname.github.io/source/下新建CNAME文件，写入购买的域名，保存并部署。</p>
+<h5 id="DNS设置"><a href="#DNS设置" class="headerlink" title="DNS设置"></a>DNS设置</h5><p>建议使用DNSpod,添加两条A记录分别为<br>192.30.252.153<br>192.30.252.154<br>这两个IP即GitHub Pages的IP。</p>
+<h5 id="去namecheap修改DNS地址"><a href="#去namecheap修改DNS地址" class="headerlink" title="去namecheap修改DNS地址"></a>去namecheap修改DNS地址</h5><p>在域名设置里面将DNS改为DNSpod提供的DNS<br>f1g1ns1.dnspod.net<br>f1g1ns2.dnspod.net<br>可能需要等段时间才能生效。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>本文有些地方可能写得不够清晰，欢迎联系原作者交流。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
